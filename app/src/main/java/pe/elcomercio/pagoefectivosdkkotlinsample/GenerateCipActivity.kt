@@ -5,9 +5,27 @@ import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.view.View
+import android.util.Log
+import pe.elcomercio.pagoefectivosdk.PagoEfectivoSdk
+import pe.elcomercio.pagoefectivosdk.cip.CipListener
+import pe.elcomercio.pagoefectivosdk.cip.usermodel.Cip
+import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipError
+import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipRequest
+import pe.elcomercio.pagoefectivosdk.util.Currency
 
-class GenerateCipActivity : AppCompatActivity() {
+class GenerateCipActivity : AppCompatActivity(), CipListener {
+    override fun OnCipFailure(p0: String?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun OnCipError(p0: MutableList<CipError>?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    }
+
+    override fun OnCipSuccessful(p0: Cip?) {
+        Log.e("CIP RESULT ", "CIP RESULT ${p0?.cip}")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +38,17 @@ class GenerateCipActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+
+        val instance = PagoEfectivoSdk.getInstance()
+
+
+        val cipRequest = CipRequest()
+        cipRequest.currency = Currency.PEN
+        cipRequest.amount = 22.65
+        cipRequest.transactionCode = "101"
+        cipRequest.userEmail = "carlosleonardo@gmail.com"
+
+        instance.generateCip(cipRequest, this)
     }
 
 }
