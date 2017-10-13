@@ -2,7 +2,6 @@ package pe.elcomercio.pagoefectivosdkkotlinsample
 
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
@@ -35,20 +34,18 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
 
         val fab = findViewById(R.id.fab) as FloatingActionButton
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+
+            val instance = PagoEfectivoSdk.getInstance()
+
+
+            val cipRequest = CipRequest()
+            cipRequest.currency = Currency.PEN
+            cipRequest.amount = 22.65
+            cipRequest.transactionCode = "101"
+            cipRequest.userEmail = "carlosleonardo@gmail.com"
+
+            instance.generateCip(cipRequest, this)
+
         }
-
-        val instance = PagoEfectivoSdk.getInstance()
-
-
-        val cipRequest = CipRequest()
-        cipRequest.currency = Currency.PEN
-        cipRequest.amount = 22.65
-        cipRequest.transactionCode = "101"
-        cipRequest.userEmail = "carlosleonardo@gmail.com"
-
-        instance.generateCip(cipRequest, this)
     }
-
 }
