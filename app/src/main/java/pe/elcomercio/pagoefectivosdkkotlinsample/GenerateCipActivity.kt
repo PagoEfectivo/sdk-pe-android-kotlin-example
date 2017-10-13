@@ -5,6 +5,8 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import pe.elcomercio.pagoefectivosdk.PagoEfectivoSdk
 import pe.elcomercio.pagoefectivosdk.cip.CipListener
 import pe.elcomercio.pagoefectivosdk.cip.usermodel.Cip
@@ -32,10 +34,28 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
+
+        val currencyList = listOf("Carlitos ", "SALUDOS")
+
+
+        val spiCurrency = findViewById(R.id.spiCurrency) as Spinner
+
+
+        val currencyAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, currencyList)
+        currencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        spiCurrency.adapter = currencyAdapter
+
+
+        //val list = resources.getStringArray(R.array.month)
+
+
         val fab = findViewById(R.id.fab) as FloatingActionButton
         fab.setOnClickListener { view ->
 
-            val instance = PagoEfectivoSdk.getInstance()
+            //Log.e("VEAMOS ","VEAMOS ${list.size}")
+
+            /*val instance = PagoEfectivoSdk.getInstance()
 
 
             val cipRequest = CipRequest()
@@ -44,7 +64,7 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
             cipRequest.transactionCode = "101"
             cipRequest.userEmail = "carlosleonardo@gmail.com"
 
-            instance.generateCip(cipRequest, this)
+            instance.generateCip(cipRequest, this)*/
 
         }
     }
