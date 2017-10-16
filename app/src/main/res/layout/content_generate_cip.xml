@@ -8,7 +8,6 @@
     tools:context="pe.elcomercio.pagoefectivosdkkotlinsample.GenerateCipActivity"
     tools:showIn="@layout/activity_generate_cip">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,6 +34,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/amount" />
@@ -54,6 +54,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtTransactionCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/transaction_code" />
@@ -66,6 +67,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtDateExpiry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/date_expiry" />
@@ -85,6 +87,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtAdditionalData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/additional_data" />
@@ -97,6 +100,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtPaymentConcept"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/payment_concept" />
@@ -108,6 +112,7 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/txtUserEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -127,6 +132,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_name" />
@@ -139,6 +145,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_last_name" />
@@ -158,6 +165,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserUbigeo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_ubigeo" />
@@ -170,6 +178,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserCountry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_country" />
@@ -189,6 +198,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserDocumentType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_document_type" />
@@ -201,6 +211,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserDocumentNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_document_number" />
@@ -220,6 +231,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_phone" />
@@ -232,6 +244,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserCodeCountry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_code_country" />
@@ -243,6 +256,7 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/txtAdminEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/admin_email" />

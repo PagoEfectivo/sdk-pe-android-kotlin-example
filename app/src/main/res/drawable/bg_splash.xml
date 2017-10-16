@@ -6,6 +6,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/pagoefectivo" />
+            android:src="@drawable/pagoefectivo_logo" />
     </item>
 </layer-list>
