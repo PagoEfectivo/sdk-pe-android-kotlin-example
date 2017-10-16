@@ -21,11 +21,11 @@
 
             <Spinner
                 android:id="@+id/spiCurrency"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+                android:layout_weight="1" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -178,10 +178,11 @@
                 android:layout_weight="1">
 
                 <EditText
-                    android:id="@+id/txtUserCountry"
+                    android:id="@+id/txtUserPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/user_country" />
+                    android:hint="@string/user_phone" />
+
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -191,18 +192,13 @@
             android:baselineAligned="false"
             android:orientation="horizontal">
 
-            <android.support.design.widget.TextInputLayout
+            <Spinner
+                android:id="@+id/spiUserDocumentType"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_weight="1">
-
-                <EditText
-                    android:id="@+id/txtUserDocumentType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/user_document_type" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_weight="1" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -231,10 +227,10 @@
                 android:layout_weight="1">
 
                 <EditText
-                    android:id="@+id/txtUserPhone"
+                    android:id="@+id/txtUserCountry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/user_phone" />
+                    android:hint="@string/user_country" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
