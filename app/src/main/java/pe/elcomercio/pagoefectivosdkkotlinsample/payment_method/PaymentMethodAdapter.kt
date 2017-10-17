@@ -1,6 +1,5 @@
 package pe.elcomercio.pagoefectivosdkkotlinsample.payment_method
 
-import android.content.ClipData
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +14,8 @@ class PaymentMethodAdapter(val paymentMethodList: List<String>, val listener: (S
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ItemViewHolder
             = ItemViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_payment_method, parent, false))
 
-    override fun onBindViewHolder(holder: ItemViewHolder?, position: Int) =
-            with(holder!!.itemView) {
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) =
+            with(holder.itemView) {
                 lblTitle.text = paymentMethodList[position]
                 setOnClickListener {
                     listener(paymentMethodList[position])
