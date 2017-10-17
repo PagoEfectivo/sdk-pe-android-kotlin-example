@@ -4,13 +4,13 @@
     <string name="welcome_to_pagoefectivosdk">Bienvenido a PagoEfectivoSDK</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_generate_cip">GenerateCipActivity</string>
-    <string name="currency">currency</string>
-    <string name="amount">amount</string>
-    <string name="transaction_code">transactionCode</string>
+    <string name="currency">currency*</string>
+    <string name="amount">amount*</string>
+    <string name="transaction_code">transactionCode*</string>
     <string name="date_expiry">dateExpiry</string>
     <string name="additional_data">additionalData</string>
     <string name="payment_concept">paymentConcept</string>
-    <string name="user_email">userEmail</string>
+    <string name="user_email">userEmail*</string>
     <string name="user_name">userName</string>
     <string name="user_last_name">userLastName</string>
     <string name="user_ubigeo">userUbigeo</string>
@@ -21,4 +21,14 @@
     <string name="user_code_country">userCodeCountry</string>
     <string name="admin_email">adminEmail</string>
     <string name="title_activity_list_cips">ListCipsActivity</string>
+
+    <string name="document_dni">DNI</string>
+    <string name="document_pas">Pasaporte</string>
+
+    <string name="document_lmi">Libreta Militar</string>
+    <string name="document_par">Partida de Nacimiento</string>
+    <string name="document_nan">Otros</string>
+
+    <string name="currency_pen">Soles</string>
+    <string name="currency_usd">Dólares</string>
 </resources>

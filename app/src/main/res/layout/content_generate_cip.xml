@@ -8,7 +8,6 @@
     tools:context="pe.elcomercio.pagoefectivosdkkotlinsample.GenerateCipActivity"
     tools:showIn="@layout/activity_generate_cip">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,8 +16,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spiCurrency"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -27,18 +34,7 @@
                 android:layout_weight="1">
 
                 <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/currency" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1">
-
-                <EditText
+                    android:id="@+id/txtAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/amount" />
@@ -48,8 +44,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -58,6 +54,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtTransactionCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/transaction_code" />
@@ -70,6 +67,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtDateExpiry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/date_expiry" />
@@ -79,8 +77,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -89,6 +87,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtAdditionalData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/additional_data" />
@@ -101,6 +100,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtPaymentConcept"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/payment_concept" />
@@ -112,6 +112,7 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/txtUserEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -121,8 +122,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -131,6 +132,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_name" />
@@ -143,6 +145,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_last_name" />
@@ -152,8 +155,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -162,6 +165,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserUbigeo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_ubigeo" />
@@ -174,17 +178,27 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/user_country" />
+                    android:hint="@string/user_phone" />
+
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spiUserDocumentType"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -193,18 +207,7 @@
                 android:layout_weight="1">
 
                 <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/user_document_type" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1">
-
-                <EditText
+                    android:id="@+id/txtUserDocumentNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_document_number" />
@@ -214,8 +217,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -224,9 +227,10 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserCountry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/user_phone" />
+                    android:hint="@string/user_country" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -236,6 +240,7 @@
                 android:layout_weight="1">
 
                 <EditText
+                    android:id="@+id/txtUserCodeCountry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_code_country" />
@@ -247,6 +252,7 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/txtAdminEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/admin_email" />
