@@ -39,4 +39,9 @@
     <string name="pe_master_card">Master Card</string>
     <string name="pe_american_express">American Express</string>
     <string name="pe_dinners_club">Dinners Club</string>
+    <string name="title_activity_agents">AgentsActivity</string>
+
+    <string name="cip_subtitle">CIP :</string>
+    <string name="amount_subtitle">Monto</string>
+    <string name="date_expiry_subtitle">Fecha de vencimiento</string>
 </resources>

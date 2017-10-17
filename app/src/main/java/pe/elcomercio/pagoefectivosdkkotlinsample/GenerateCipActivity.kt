@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_generate_cip.*
 import kotlinx.android.synthetic.main.content_generate_cip.*
@@ -14,7 +15,8 @@ import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipError
 import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipRequest
 import pe.elcomercio.pagoefectivosdk.util.Currency
 import pe.elcomercio.pagoefectivosdk.util.DocumentType
-import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
+import pe.elcomercio.pagoefectivosdkkotlinsample.agent.AgentsActivity
+import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
 
 class GenerateCipActivity : AppCompatActivity(), CipListener {
 
@@ -105,17 +107,20 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
     override fun OnCipSuccessful(p0: Cip?) {
         val cipGeneratedStringBuilder = StringBuilder()
         cipGeneratedStringBuilder.append("\n\n")
-        cipGeneratedStringBuilder.append(" - CIP: ").append(p0!!.getCip()).append("\n")
-        cipGeneratedStringBuilder.append(" - AMOUNT: ").append(p0.getAmount()).append("\n")
-        cipGeneratedStringBuilder.append(" - CURRENCY: ").append(p0.getCurrency()).append("\n")
-        cipGeneratedStringBuilder.append(" - DATEXPIRY: ").append(p0.getDateExpiry()).append("\n")
-        cipGeneratedStringBuilder.append(" - TRANSACTIONCODE: ").append(p0.getTransactionCode()).append("\n")
+        cipGeneratedStringBuilder.append(" - CIP: ").append(p0!!.cip).append("\n")
+        cipGeneratedStringBuilder.append(" - AMOUNT: ").append(p0.amount).append("\n")
+        cipGeneratedStringBuilder.append(" - CURRENCY: ").append(p0.currency).append("\n")
+        cipGeneratedStringBuilder.append(" - DATEXPIRY: ").append(p0.dateExpiry).append("\n")
+        cipGeneratedStringBuilder.append(" - TRANSACTIONCODE: ").append(p0.transactionCode).append("\n")
         printMessageInToast(cipGeneratedStringBuilder.toString())
-        startListCipActivity()
+        startListCipActivity(p0)
     }
 
-    private fun startListCipActivity() {
-        val intent = Intent(this, PaymentMethodActivity::class.java)
+    private fun startListCipActivity(p0: Cip?) {
+        val intent = Intent(this, AgentsActivity::class.java)
+        intent.putExtra("cip", p0!!.cip)
+        intent.putExtra("amount", p0.amount)
+        intent.putExtra("dateExpiry", p0.dateExpiry)
         startActivity(intent)
     }
 }
