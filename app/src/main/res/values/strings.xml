@@ -31,4 +31,12 @@
 
     <string name="currency_pen">Soles</string>
     <string name="currency_usd">Dólares</string>
+    <string name="title_activity_payment_method">PaymentMethodActivity</string>
+
+    <string name="pe_mobile_internet">Pago Efectivo Móvil y/o Internet</string>
+    <string name="pe_agent_agencies">Pago Efectivo Agentes y Agencias</string>
+    <string name="pe_visa">Visa</string>
+    <string name="pe_master_card">Master Card</string>
+    <string name="pe_american_express">American Express</string>
+    <string name="pe_dinners_club">Dinners Club</string>
 </resources>
