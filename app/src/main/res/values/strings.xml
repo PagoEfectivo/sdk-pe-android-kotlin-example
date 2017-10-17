@@ -21,4 +21,14 @@
     <string name="user_code_country">userCodeCountry</string>
     <string name="admin_email">adminEmail</string>
     <string name="title_activity_list_cips">ListCipsActivity</string>
+
+    <string name="document_dni">DNI</string>
+    <string name="document_pas">Pasaporte</string>
+
+    <string name="document_lmi">Libreta Militar</string>
+    <string name="document_par">Partida de Nacimiento</string>
+    <string name="document_nan">Otros</string>
+
+    <string name="currency_pen">Soles</string>
+    <string name="currency_usd">Dólares</string>
 </resources>
