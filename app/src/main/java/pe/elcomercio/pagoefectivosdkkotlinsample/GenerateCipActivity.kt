@@ -1,5 +1,6 @@
 package pe.elcomercio.pagoefectivosdkkotlinsample
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -13,6 +14,7 @@ import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipError
 import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipRequest
 import pe.elcomercio.pagoefectivosdk.util.Currency
 import pe.elcomercio.pagoefectivosdk.util.DocumentType
+import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
 
 class GenerateCipActivity : AppCompatActivity(), CipListener {
 
@@ -109,5 +111,11 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
         cipGeneratedStringBuilder.append(" - DATEXPIRY: ").append(p0.getDateExpiry()).append("\n")
         cipGeneratedStringBuilder.append(" - TRANSACTIONCODE: ").append(p0.getTransactionCode()).append("\n")
         printMessageInToast(cipGeneratedStringBuilder.toString())
+        startListCipActivity()
+    }
+
+    private fun startListCipActivity() {
+        val intent = Intent(this, PaymentMethodActivity::class.java)
+        startActivity(intent)
     }
 }
