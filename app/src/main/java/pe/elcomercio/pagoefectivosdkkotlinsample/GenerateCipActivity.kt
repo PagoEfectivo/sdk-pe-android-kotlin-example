@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_generate_cip.*
 import kotlinx.android.synthetic.main.content_generate_cip.*
 import pe.elcomercio.pagoefectivosdk.PagoEfectivoSdk
@@ -62,7 +61,7 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
 
     fun getCipRequestObject(): CipRequest {
         val cipRequest = CipRequest()
-        cipRequest.currency = getCurrency(spiCurrency.selectedItemPosition)
+        cipRequest.currency = currencyValueList[spiCurrency.selectedItemPosition]
         cipRequest.amount = if (!txtAmount.text.toString().isEmpty()) txtAmount.text.toString().toDouble() else 0.00
         cipRequest.userEmail = txtUserEmail.text.toString()
         cipRequest.transactionCode = txtTransactionCode.text.toString()
@@ -73,7 +72,7 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
         cipRequest.userLastName = txtUserLastName.text.toString()
         cipRequest.userUbigeo = txtUserUbigeo.text.toString()
         cipRequest.userCountry = txtUserCountry.text.toString()
-        cipRequest.userDocumentType = getDocumentType(spiUserDocumentType.selectedItemPosition)
+        cipRequest.userDocumentType = documentTypeValueList[spiUserDocumentType.selectedItemPosition]
         cipRequest.userDocumentNumber = txtUserDocumentNumber.text.toString()
         cipRequest.userPhone = txtUserPhone.text.toString()
         cipRequest.userCodeCountry = txtUserCodeCountry.text.toString()
@@ -81,12 +80,8 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
         return cipRequest
     }
 
-    private fun getCurrency(itemPosition: Int): Currency = currencyValueList[itemPosition]
-
-    private fun getDocumentType(itemPosition: Int): DocumentType = documentTypeValueList[itemPosition]
-
     override fun OnCipFailure(p0: String?) {
-        Toast.makeText(this, "Filure Generate Cip $p0", Toast.LENGTH_LONG).show()
+        printMessageInToast("Filure Generate Cip $p0")
     }
 
     override fun OnCipError(p0: MutableList<CipError>?) {
@@ -102,7 +97,7 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
                     .append(" --> ")
                     .append(error.getMessage()).append("\n")
         }
-        Toast.makeText(this, errorMessageSyringBuilder.toString(), Toast.LENGTH_LONG).show()
+        printMessageInToast(errorMessageSyringBuilder.toString())
     }
 
     override fun OnCipSuccessful(p0: Cip?) {
@@ -113,6 +108,6 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
         cipGeneratedStringBuilder.append(" - CURRENCY: ").append(p0.getCurrency()).append("\n")
         cipGeneratedStringBuilder.append(" - DATEXPIRY: ").append(p0.getDateExpiry()).append("\n")
         cipGeneratedStringBuilder.append(" - TRANSACTIONCODE: ").append(p0.getTransactionCode()).append("\n")
-        Toast.makeText(this, cipGeneratedStringBuilder.toString(), Toast.LENGTH_LONG).show()
+        printMessageInToast(cipGeneratedStringBuilder.toString())
     }
 }
