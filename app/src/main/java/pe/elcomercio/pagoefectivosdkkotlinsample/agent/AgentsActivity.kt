@@ -1,5 +1,6 @@
 package pe.elcomercio.pagoefectivosdkkotlinsample.agent
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_agents.*
@@ -8,6 +9,7 @@ import kotlinx.android.synthetic.main.content_agents.*
 import pe.elcomercio.pagoefectivosdkkotlinsample.R
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentHeaderEntity
+import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
 
 class AgentsActivity : AppCompatActivity() {
 
@@ -35,5 +37,11 @@ class AgentsActivity : AppCompatActivity() {
         if (rcvWhereToPay.adapter == null) {
             rcvWhereToPay.adapter = agentAdapter
         }
+    }
+
+    private fun startAgentActivity(it: Int) {
+        val intent = Intent(this, AgentsActivity::class.java)
+        intent.putExtra("paymentMethodType", it)
+        startActivity(intent)
     }
 }

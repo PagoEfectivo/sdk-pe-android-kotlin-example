@@ -17,6 +17,7 @@ import pe.elcomercio.pagoefectivosdk.util.Currency
 import pe.elcomercio.pagoefectivosdk.util.DocumentType
 import pe.elcomercio.pagoefectivosdkkotlinsample.agent.AgentsActivity
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
+import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
 
 class GenerateCipActivity : AppCompatActivity(), CipListener {
 
@@ -117,7 +118,7 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
     }
 
     private fun startListCipActivity(p0: Cip?) {
-        val intent = Intent(this, AgentsActivity::class.java)
+        val intent = Intent(this, PaymentMethodActivity::class.java)
         intent.putExtra("cip", p0!!.cip)
         intent.putExtra("amount", p0.amount)
         intent.putExtra("dateExpiry", p0.dateExpiry)
