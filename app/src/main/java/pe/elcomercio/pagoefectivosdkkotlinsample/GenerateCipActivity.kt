@@ -3,7 +3,6 @@ package pe.elcomercio.pagoefectivosdkkotlinsample
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_generate_cip.*
 import kotlinx.android.synthetic.main.content_generate_cip.*
@@ -17,6 +16,7 @@ import pe.elcomercio.pagoefectivosdk.util.DocumentType
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
 import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
+import java.util.*
 
 class GenerateCipActivity : AppCompatActivity(), CipListener {
 
@@ -25,16 +25,14 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
             Currency.USD)
     private val documentTypeValueList = listOf(
             DocumentType.DNI,
-            DocumentType.LMI,
-            DocumentType.NAN,
-            DocumentType.PAR,
+            DocumentType.LIBRETA_MILITAR,
+            DocumentType.OTROS,
+            DocumentType.PARTIDA_NACIMIENTO,
             DocumentType.PASSPORT)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_generate_cip)
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
 
         val currencyNameList = listOf(
                 getString(R.string.currency_pen),
@@ -57,19 +55,30 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
 
         spiUserDocumentType.adapter = documentTypeAdapter
 
-        fab.setOnClickListener { _ ->
+        fab.setOnClickListener {
+            printMessageInToast(resources.getString(R.string.generating_cip))
             val instance = PagoEfectivoSdk.getInstance()
             instance.generateCip(getCipRequestObject(), this)
         }
     }
 
-    fun getCipRequestObject(): CipRequest {
+    private fun getCipRequestObject(): CipRequest {
         val cipRequest = CipRequest()
         cipRequest.currency = currencyValueList[spiCurrency.selectedItemPosition]
         cipRequest.amount = if (!txtAmount.text.toString().isEmpty()) txtAmount.text.toString().toDouble() else 0.00
         cipRequest.userEmail = txtUserEmail.text.toString()
         cipRequest.transactionCode = txtTransactionCode.text.toString()
-        cipRequest.dateExpiry = "2017-08-24T05:40:00-05:00"
+
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.YEAR, 2017)
+        calendar.set(Calendar.MONTH, Calendar.OCTOBER)
+        calendar.set(Calendar.DATE, 20)
+
+        calendar.set(Calendar.HOUR_OF_DAY, 20)
+        calendar.set(Calendar.MINUTE, 14)
+        calendar.set(Calendar.SECOND, 0)
+
+        cipRequest.dateExpiry = calendar.time
         cipRequest.additionalData = txtAdditionalData.text.toString()
         cipRequest.paymentConcept = txtPaymentConcept.text.toString()
         cipRequest.userName = txtUserName.text.toString()
@@ -80,13 +89,15 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
         cipRequest.userDocumentNumber = txtUserDocumentNumber.text.toString()
         cipRequest.userPhone = txtUserPhone.text.toString()
         cipRequest.userCodeCountry = txtUserCodeCountry.text.toString()
-        cipRequest.adminEmail = txtAdminEmail.text.toString()
+
+        if (!txtAdminEmail.text.toString().isEmpty()) {
+            cipRequest.adminEmail = txtAdminEmail.text.toString()
+        }
+
         return cipRequest
     }
 
-    override fun OnCipFailure(p0: String?) {
-        printMessageInToast("Filure Generate Cip $p0")
-    }
+    override fun OnCipFailure(p0: String?) = printMessageInToast("Filure Generate Cip $p0")
 
     override fun OnCipError(p0: MutableList<CipError>?) {
         val errorMessageSyringBuilder = StringBuilder()
@@ -95,11 +106,11 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
                     .append("Error")
                     .append("\n\n")
                     .append("- (")
-                    .append(error.getCode()).append(")")
+                    .append(error.code).append(")")
                     .append(" | ")
-                    .append(error.getField())
+                    .append(error.field)
                     .append(" --> ")
-                    .append(error.getMessage()).append("\n")
+                    .append(error.message).append("\n")
         }
         printMessageInToast(errorMessageSyringBuilder.toString())
     }

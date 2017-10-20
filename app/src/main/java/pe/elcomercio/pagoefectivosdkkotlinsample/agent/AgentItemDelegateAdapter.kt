@@ -15,8 +15,7 @@ import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
  */
 class AgentItemDelegateAdapter : ViewTypeDelegateAdapter {
 
-    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder =
-            AgentViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = AgentViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, viewType: ViewType) {
         holder as AgentViewHolder

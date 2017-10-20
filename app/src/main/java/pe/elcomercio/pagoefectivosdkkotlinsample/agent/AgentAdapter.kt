@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.AdapterConstants
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.ViewType
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.ViewTypeDelegateAdapter
-import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentHeaderEntity
+import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
 
 /**
  * Created by carlosleonardocamilovargashuaman on 10/18/17.
@@ -30,9 +30,8 @@ class AgentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
             delegateAdapters.get(viewType).onCreateViewHolder(parent)
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        delegateAdapters.get(getItemViewType(position)).onBindViewHolder(holder, items[position])
-    }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
+            delegateAdapters.get(getItemViewType(position)).onBindViewHolder(holder, items[position])
 
     fun addAgentHeader(agentHeaderList: List<AgentHeaderEntity>) {
         items.addAll(agentHeaderList)
