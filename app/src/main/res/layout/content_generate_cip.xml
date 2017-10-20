@@ -37,7 +37,8 @@
                     android:id="@+id/txtAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/amount" />
+                    android:hint="@string/amount"
+                    android:inputType="numberDecimal" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -70,7 +71,8 @@
                     android:id="@+id/txtDateExpiry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/date_expiry" />
+                    android:hint="@string/date_expiry"
+                    android:inputType="datetime" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -116,7 +118,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:hint="@string/user_email" />
+                android:hint="@string/user_email"
+                android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
@@ -255,7 +258,8 @@
                 android:id="@+id/txtAdminEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/admin_email" />
+                android:hint="@string/admin_email"
+                android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>

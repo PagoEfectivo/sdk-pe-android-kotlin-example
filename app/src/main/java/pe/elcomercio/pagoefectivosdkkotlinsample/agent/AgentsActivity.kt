@@ -7,12 +7,12 @@ import kotlinx.android.synthetic.main.activity_agents.*
 import kotlinx.android.synthetic.main.content_agents.*
 
 import pe.elcomercio.pagoefectivosdkkotlinsample.R
+import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentHeaderEntity
-import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
 
 class AgentsActivity : AppCompatActivity() {
-
+    var paymentMethodType = 0
     private val agentAdapter = AgentAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,16 +21,26 @@ class AgentsActivity : AppCompatActivity() {
 
         init()
         val bundle = intent.extras
+        paymentMethodType = bundle.getInt(Constants.PAYMENT_METHOD_TYPE_KEY)
+
         agentAdapter.addAgentHeader(listOf(AgentHeaderEntity(
-                bundle.getInt("cip"),
-                bundle.getDouble("amount").toString(),
-                bundle.getString("dateExpiry"))))
+                bundle.getInt(Constants.CIP_KEY),
+                bundle.getDouble(Constants.AMOUNT_KEY).toString(),
+                bundle.getString(Constants.DATE_EXPIRY_KEY))))
+
         agentAdapter.addAgentItem(listOf(
-                AgentItemEntity("BCP"),
-                AgentItemEntity("BANBIF"),
-                AgentItemEntity("BBVA"),
-                AgentItemEntity("SCOTIABANK"),
-                AgentItemEntity("IBK")))
+                AgentItemEntity(getString(R.string.agent_bcp)),
+                AgentItemEntity(getString(R.string.agent_banbif)),
+                AgentItemEntity(getString(R.string.agent_bbva)),
+                AgentItemEntity(getString(R.string.agent_scotiabank)),
+                AgentItemEntity(getString(R.string.agent_ibk))))
+
+        if (paymentMethodType == 2) {
+            agentAdapter.addAgentItem(listOf(
+                    AgentItemEntity(getString(R.string.agent_casnet)),
+                    AgentItemEntity(getString(R.string.agent_wester)),
+                    AgentItemEntity(getString(R.string.agent_full_charge))))
+        }
     }
 
     private fun init() {
@@ -39,9 +49,8 @@ class AgentsActivity : AppCompatActivity() {
         }
     }
 
-    private fun startAgentActivity(it: Int) {
+    private fun startPaymentDetailActivity() {
         val intent = Intent(this, AgentsActivity::class.java)
-        intent.putExtra("paymentMethodType", it)
         startActivity(intent)
     }
 }

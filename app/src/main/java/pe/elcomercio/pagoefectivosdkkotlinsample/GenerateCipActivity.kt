@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_generate_cip.*
 import kotlinx.android.synthetic.main.content_generate_cip.*
 import pe.elcomercio.pagoefectivosdk.PagoEfectivoSdk
@@ -16,6 +17,7 @@ import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipRequest
 import pe.elcomercio.pagoefectivosdk.util.Currency
 import pe.elcomercio.pagoefectivosdk.util.DocumentType
 import pe.elcomercio.pagoefectivosdkkotlinsample.agent.AgentsActivity
+import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
 import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
 
@@ -119,9 +121,9 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
 
     private fun startListCipActivity(p0: Cip?) {
         val intent = Intent(this, PaymentMethodActivity::class.java)
-        intent.putExtra("cip", p0!!.cip)
-        intent.putExtra("amount", p0.amount)
-        intent.putExtra("dateExpiry", p0.dateExpiry)
+        intent.putExtra(Constants.CIP_KEY, p0!!.cip)
+        intent.putExtra(Constants.AMOUNT_KEY, p0.amount)
+        intent.putExtra(Constants.DATE_EXPIRY_KEY, p0.dateExpiry)
         startActivity(intent)
     }
 }
