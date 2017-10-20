@@ -14,6 +14,8 @@ import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipError
 import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipRequest
 import pe.elcomercio.pagoefectivosdk.util.Currency
 import pe.elcomercio.pagoefectivosdk.util.DocumentType
+import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
+import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
 import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
 
 class GenerateCipActivity : AppCompatActivity(), CipListener {
@@ -105,17 +107,19 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
     override fun OnCipSuccessful(p0: Cip?) {
         val cipGeneratedStringBuilder = StringBuilder()
         cipGeneratedStringBuilder.append("\n\n")
-        cipGeneratedStringBuilder.append(" - CIP: ").append(p0!!.getCip()).append("\n")
-        cipGeneratedStringBuilder.append(" - AMOUNT: ").append(p0.getAmount()).append("\n")
-        cipGeneratedStringBuilder.append(" - CURRENCY: ").append(p0.getCurrency()).append("\n")
-        cipGeneratedStringBuilder.append(" - DATEXPIRY: ").append(p0.getDateExpiry()).append("\n")
-        cipGeneratedStringBuilder.append(" - TRANSACTIONCODE: ").append(p0.getTransactionCode()).append("\n")
-        printMessageInToast(cipGeneratedStringBuilder.toString())
-        startListCipActivity()
+        cipGeneratedStringBuilder.append(" - CIP: ").append(p0!!.cip).append("\n")
+        cipGeneratedStringBuilder.append(" - AMOUNT: ").append(p0.amount).append("\n")
+        cipGeneratedStringBuilder.append(" - CURRENCY: ").append(p0.currency).append("\n")
+        cipGeneratedStringBuilder.append(" - DATEXPIRY: ").append(p0.dateExpiry).append("\n")
+        cipGeneratedStringBuilder.append(" - TRANSACTIONCODE: ").append(p0.transactionCode).append("\n")
+        startListCipActivity(p0)
     }
 
-    private fun startListCipActivity() {
+    private fun startListCipActivity(p0: Cip?) {
         val intent = Intent(this, PaymentMethodActivity::class.java)
+        intent.putExtra(Constants.CIP_KEY, p0!!.cip)
+        intent.putExtra(Constants.AMOUNT_KEY, p0.amount)
+        intent.putExtra(Constants.DATE_EXPIRY_KEY, p0.dateExpiry)
         startActivity(intent)
     }
 }

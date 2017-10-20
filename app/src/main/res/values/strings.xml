@@ -39,4 +39,18 @@
     <string name="pe_master_card">Master Card</string>
     <string name="pe_american_express">American Express</string>
     <string name="pe_dinners_club">Dinners Club</string>
+    <string name="title_activity_agents">AgentsActivity</string>
+
+    <string name="cip_subtitle">CIP :</string>
+    <string name="amount_subtitle">Monto</string>
+    <string name="date_expiry_subtitle">Fecha de vencimiento</string>
+
+    <string name="agent_bcp">BCP</string>
+    <string name="agent_banbif">BANBIF</string>
+    <string name="agent_bbva">BBVA</string>
+    <string name="agent_scotiabank">SCOTIABANK</string>
+    <string name="agent_ibk">IBK</string>
+    <string name="agent_casnet">AGENTE CASNET</string>
+    <string name="agent_wester">WESTERN UNION</string>
+    <string name="agent_full_charge">FULL CARGA</string>
 </resources>
