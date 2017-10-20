@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_generate_cip.*
 import kotlinx.android.synthetic.main.content_generate_cip.*
 import pe.elcomercio.pagoefectivosdk.PagoEfectivoSdk
@@ -16,7 +14,6 @@ import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipError
 import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipRequest
 import pe.elcomercio.pagoefectivosdk.util.Currency
 import pe.elcomercio.pagoefectivosdk.util.DocumentType
-import pe.elcomercio.pagoefectivosdkkotlinsample.agent.AgentsActivity
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
 import pe.elcomercio.pagoefectivosdkkotlinsample.payment_method.PaymentMethodActivity
@@ -115,7 +112,6 @@ class GenerateCipActivity : AppCompatActivity(), CipListener {
         cipGeneratedStringBuilder.append(" - CURRENCY: ").append(p0.currency).append("\n")
         cipGeneratedStringBuilder.append(" - DATEXPIRY: ").append(p0.dateExpiry).append("\n")
         cipGeneratedStringBuilder.append(" - TRANSACTIONCODE: ").append(p0.transactionCode).append("\n")
-        printMessageInToast(cipGeneratedStringBuilder.toString())
         startListCipActivity(p0)
     }
 

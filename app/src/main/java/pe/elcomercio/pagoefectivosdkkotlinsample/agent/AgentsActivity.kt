@@ -12,7 +12,7 @@ import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentHeaderEntity
 
 class AgentsActivity : AppCompatActivity() {
-    var paymentMethodType = 0
+
     private val agentAdapter = AgentAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class AgentsActivity : AppCompatActivity() {
 
         init()
         val bundle = intent.extras
-        paymentMethodType = bundle.getInt(Constants.PAYMENT_METHOD_TYPE_KEY)
+        val paymentMethodType = bundle.getInt(Constants.PAYMENT_METHOD_TYPE_KEY, 0)
 
         agentAdapter.addAgentHeader(listOf(AgentHeaderEntity(
                 bundle.getInt(Constants.CIP_KEY),
@@ -35,7 +35,7 @@ class AgentsActivity : AppCompatActivity() {
                 AgentItemEntity(getString(R.string.agent_scotiabank)),
                 AgentItemEntity(getString(R.string.agent_ibk))))
 
-        if (paymentMethodType == 2) {
+        if (paymentMethodType == Constants.AGENT_TYPE) {
             agentAdapter.addAgentItem(listOf(
                     AgentItemEntity(getString(R.string.agent_casnet)),
                     AgentItemEntity(getString(R.string.agent_wester)),
