@@ -3,25 +3,39 @@ package pe.elcomercio.pagoefectivosdkkotlinsample.agent
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_agents.*
-import kotlinx.android.synthetic.main.content_agents.*
-
+import android.support.v7.widget.DividerItemDecoration
+import kotlinx.android.synthetic.main.activity_where_pay.*
 import pe.elcomercio.pagoefectivosdkkotlinsample.R
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
-import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentHeaderEntity
+import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
+import java.util.*
 
-class AgentsActivity : AppCompatActivity() {
+class WhereToPayActivity : AppCompatActivity() {
 
     private val agentAdapter = AgentAdapter()
+    private val typePaymentMethods = ArrayList<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_agents)
-        setSupportActionBar(toolbar)
-
+        setContentView(R.layout.activity_where_pay)
         init()
+    }
+
+    private fun init() {
+
+        //Type Payments
+        typePaymentMethods.add(getString(R.string.title_movil))
+        typePaymentMethods.add(getString(R.string.title_agents))
+
+        //Get Cip
         val bundle = intent.extras
         val paymentMethodType = bundle.getInt(Constants.PAYMENT_METHOD_TYPE_KEY, 0)
+
+        //Set title toolbar
+        if (supportActionBar != null) {
+            supportActionBar!!.title = typePaymentMethods[paymentMethodType - 1]
+        }
 
         agentAdapter.addAgentHeader(listOf(AgentHeaderEntity(
                 bundle.getInt(Constants.CIP_KEY),
@@ -41,16 +55,16 @@ class AgentsActivity : AppCompatActivity() {
                     AgentItemEntity(getString(R.string.agent_wester)),
                     AgentItemEntity(getString(R.string.agent_full_charge))))
         }
-    }
 
-    private fun init() {
         if (rcvWhereToPay.adapter == null) {
             rcvWhereToPay.adapter = agentAdapter
         }
+        rcvWhereToPay.setHasFixedSize(true)
+        rcvWhereToPay.addItemDecoration(DividerItemDecoration(rcvWhereToPay.context, DividerItemDecoration.VERTICAL))
     }
 
     private fun startPaymentDetailActivity() {
-        val intent = Intent(this, AgentsActivity::class.java)
+        val intent = Intent(this, WhereToPayActivity::class.java)
         startActivity(intent)
     }
 }
