@@ -9,4 +9,5 @@ object Constants {
     val DATE_EXPIRY_KEY = "dateExpiry"
     val PAYMENT_METHOD_TYPE_KEY = "paymentMethodType"
     val AGENT_TYPE = 2
+    val AGENT_NAME = "agent_name"
 }

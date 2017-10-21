@@ -11,8 +11,7 @@ import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.inflate
  */
 class ListCipAdapter(private val cipList: List<Int>) : RecyclerView.Adapter<ListCipAdapter.ListItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder =
-            ListItemViewHolder(parent.inflate(R.layout.item_edittext))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder = ListItemViewHolder(parent.inflate(R.layout.item_edittext))
 
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) = Unit
 

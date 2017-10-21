@@ -13,9 +13,7 @@ import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.inflate
  */
 class ResultSearchAdapter(private val cipSearches: List<CipSearch>) : RecyclerView.Adapter<ResultSearchAdapter.ResultSearchItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultSearchItemViewHolder =
-            ResultSearchItemViewHolder(parent.inflate(R.layout.item_result_search))
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultSearchItemViewHolder = ResultSearchItemViewHolder(parent.inflate(R.layout.item_result_search))
 
     override fun onBindViewHolder(holder: ResultSearchItemViewHolder, position: Int) = with(holder.itemView) {
         lblCipSearch.text = cipSearches[position].cip.toString()

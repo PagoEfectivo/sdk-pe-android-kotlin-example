@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.activity_where_pay.*
+import pe.elcomercio.pagoefectivosdkkotlinsample.PaymentDetailActivity
 import pe.elcomercio.pagoefectivosdkkotlinsample.R
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentHeaderEntity
@@ -13,8 +14,10 @@ import java.util.*
 
 class WhereToPayActivity : AppCompatActivity() {
 
-    private val agentAdapter = AgentAdapter()
     private val typePaymentMethods = ArrayList<String>()
+
+    private var cip = 0
+    private var amount = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,10 @@ class WhereToPayActivity : AppCompatActivity() {
 
     private fun init() {
 
+        val agentAdapter = WhereToPayAdapter {
+            startPaymentDetailActivity(it)
+        }
+
         //Type Payments
         typePaymentMethods.add(getString(R.string.title_movil))
         typePaymentMethods.add(getString(R.string.title_agents))
@@ -31,15 +38,15 @@ class WhereToPayActivity : AppCompatActivity() {
         //Get Cip
         val bundle = intent.extras
         val paymentMethodType = bundle.getInt(Constants.PAYMENT_METHOD_TYPE_KEY, 0)
+        cip = bundle.getInt(Constants.CIP_KEY)
+        amount = bundle.getDouble(Constants.AMOUNT_KEY)
 
         //Set title toolbar
-        if (supportActionBar != null) {
-            supportActionBar!!.title = typePaymentMethods[paymentMethodType - 1]
-        }
+        supportActionBar?.title = typePaymentMethods[paymentMethodType - 1]
 
         agentAdapter.addAgentHeader(listOf(AgentHeaderEntity(
-                bundle.getInt(Constants.CIP_KEY),
-                bundle.getDouble(Constants.AMOUNT_KEY).toString(),
+                cip,
+                amount.toString(),
                 bundle.getString(Constants.DATE_EXPIRY_KEY))))
 
         agentAdapter.addAgentItem(listOf(
@@ -59,12 +66,16 @@ class WhereToPayActivity : AppCompatActivity() {
         if (rcvWhereToPay.adapter == null) {
             rcvWhereToPay.adapter = agentAdapter
         }
+
         rcvWhereToPay.setHasFixedSize(true)
         rcvWhereToPay.addItemDecoration(DividerItemDecoration(rcvWhereToPay.context, DividerItemDecoration.VERTICAL))
     }
 
-    private fun startPaymentDetailActivity() {
-        val intent = Intent(this, WhereToPayActivity::class.java)
+    private fun startPaymentDetailActivity(agentName: String) {
+        val intent = Intent(this, PaymentDetailActivity::class.java)
+        intent.putExtra(Constants.CIP_KEY, cip)
+        intent.putExtra(Constants.AMOUNT_KEY, amount)
+        intent.putExtra(Constants.AGENT_NAME, agentName)
         startActivity(intent)
     }
 }

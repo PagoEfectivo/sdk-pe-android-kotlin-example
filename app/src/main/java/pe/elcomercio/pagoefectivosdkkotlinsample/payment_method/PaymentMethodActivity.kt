@@ -38,7 +38,7 @@ class PaymentMethodActivity : AppCompatActivity() {
         //Setup Recycler
         rcvPaymentMethods.adapter = PaymentMethodAdapter(paymentMethodList) {
             if (it == 1 || it == 2) {
-                startAgentCipActivity(it, cip, amount, dateExpiry)
+                startWhereToPayActivity(it, cip, amount, dateExpiry)
             } else {
                 printMessageInToast(resources.getString(R.string.payment_method_not_available))
             }
@@ -47,7 +47,7 @@ class PaymentMethodActivity : AppCompatActivity() {
         rcvPaymentMethods.addItemDecoration(DividerItemDecoration(rcvPaymentMethods.context, DividerItemDecoration.VERTICAL))
     }
 
-    private fun startAgentCipActivity(it: Int, cip: Int, amount: Double, dateExpiry: String) {
+    private fun startWhereToPayActivity(it: Int, cip: Int, amount: Double, dateExpiry: String) {
         val intent = Intent(this, WhereToPayActivity::class.java)
         intent.putExtra(Constants.PAYMENT_METHOD_TYPE_KEY, it)
         intent.putExtra(Constants.CIP_KEY, cip)
