@@ -14,6 +14,7 @@ import pe.elcomercio.pagoefectivosdkkotlinsample.R
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
 import java.util.*
 
+@Suppress("UNUSED_PARAMETER")
 class ListCipsActivity : AppCompatActivity(), SearchListener {
 
     private lateinit var instance: PagoEfectivoSdk

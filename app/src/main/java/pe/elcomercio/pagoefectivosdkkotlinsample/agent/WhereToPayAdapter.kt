@@ -12,14 +12,16 @@ import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
 /**
  * Created by carlosleonardocamilovargashuaman on 10/18/17.
  */
-class AgentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WhereToPayAdapter(private val listener: (String) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items: ArrayList<ViewType>
     private var delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
 
     init {
         delegateAdapters.put(AdapterConstants.AGENT_HEADER, AgentHeaderDelegateAdapter())
-        delegateAdapters.put(AdapterConstants.AGENT_ITEM, AgentItemDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.AGENT_ITEM, AgentItemDelegateAdapter {
+            listener(it)
+        })
         items = ArrayList()
     }
 

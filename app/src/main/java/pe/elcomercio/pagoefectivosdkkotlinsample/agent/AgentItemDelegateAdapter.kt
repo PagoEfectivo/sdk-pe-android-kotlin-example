@@ -13,22 +13,26 @@ import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity
  * Created by carlosleonardocamilovargashuaman on 10/18/17.
  *
  */
-class AgentItemDelegateAdapter : ViewTypeDelegateAdapter {
+class AgentItemDelegateAdapter(private val listener: (String) -> Unit) : ViewTypeDelegateAdapter {
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = AgentViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, viewType: ViewType) {
         holder as AgentViewHolder
-        holder.bind(viewType as AgentItemEntity)
+        holder.bind(viewType as AgentItemEntity, listener)
     }
 
-    inner class AgentViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
+    class AgentViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
             parent.inflate(R.layout.item_view_agent_item)) {
 
         private val lblTitle = itemView.lblTitle
 
-        fun bind(agentItemEntity: AgentItemEntity) {
+        fun bind(agentItemEntity: AgentItemEntity, listener: (String) -> Unit) {
             lblTitle.text = agentItemEntity.name
+            itemView.setOnClickListener {
+                listener(agentItemEntity.name)
+            }
         }
+
     }
 }

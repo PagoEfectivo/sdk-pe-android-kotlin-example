@@ -64,6 +64,7 @@
     <string name="generate_button">Generar</string>
     <string name="search_button">BuscarCips</string>
     <string name="payment_method_not_available">No disponible este método de pago</string>
+    <string name="follow_this_steps_subtitle">Sigue estos pasos</string>
 
     <string name="title_summary_payment">Paga S/. %1$s en %2$s para reservar tu compra</string>
     <string name="step_one_for_payment">1. Ve a tu agente %1$s más cercano</string>

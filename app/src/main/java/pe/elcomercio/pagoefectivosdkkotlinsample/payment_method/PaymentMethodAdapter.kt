@@ -13,16 +13,14 @@ import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.PaymentMethodEntit
  */
 class PaymentMethodAdapter(private val paymentMethodList: List<PaymentMethodEntity>, private val listener: (Int) -> Unit) : RecyclerView.Adapter<PaymentMethodAdapter.ItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder =
-            ItemViewHolder(parent.inflate(R.layout.item_payment_method))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder = ItemViewHolder(parent.inflate(R.layout.item_payment_method))
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) =
-            with(holder.itemView) {
-                lblTitle.text = paymentMethodList[position].name
-                setOnClickListener {
-                    listener(paymentMethodList[position].id)
-                }
-            }
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) = with(holder.itemView) {
+        lblTitle.text = paymentMethodList[position].name
+        setOnClickListener {
+            listener(paymentMethodList[position].id)
+        }
+    }
 
     override fun getItemCount(): Int = paymentMethodList.size
 
