@@ -1,8 +1,9 @@
-package pe.elcomercio.pagoefectivosdkkotlinsample
+package pe.elcomercio.pagoefectivosdkkotlinsample.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_payment_detail.*
+import pe.elcomercio.pagoefectivosdkkotlinsample.R
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
 
 class PaymentDetailActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package pe.elcomercio.pagoefectivosdkkotlinsample.payment_method
+package pe.elcomercio.pagoefectivosdkkotlinsample.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,10 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.activity_payment_method.*
 import pe.elcomercio.pagoefectivosdkkotlinsample.R
-import pe.elcomercio.pagoefectivosdkkotlinsample.agent.WhereToPayActivity
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.PaymentMethodEntity
+import pe.elcomercio.pagoefectivosdkkotlinsample.activities.adapters.PaymentMethodAdapter
 
 class PaymentMethodActivity : AppCompatActivity() {
 

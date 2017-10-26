@@ -2,12 +2,8 @@
     <string name="app_name">PagoEfectivoSDKKotlinSample</string>
     <string name="action_settings">Settings</string>
     <string name="welcome_to_pagoefectivosdk">Bienvenido a PagoEfectivoSDK</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_activity_generate_cip">GenerateCipActivity</string>
-    <string name="currency">currency*</string>
     <string name="amount">amount*</string>
     <string name="transaction_code">transactionCode*</string>
-    <string name="date_expiry">dateExpiry</string>
     <string name="additional_data">additionalData</string>
     <string name="payment_concept">paymentConcept</string>
     <string name="user_email">userEmail*</string>
@@ -15,13 +11,12 @@
     <string name="user_last_name">userLastName</string>
     <string name="user_ubigeo">userUbigeo</string>
     <string name="user_country">userCountry</string>
-    <string name="user_document_type">userDocumentType</string>
     <string name="user_document_number">userDocumentNumber</string>
     <string name="user_phone">userPhone</string>
     <string name="user_code_country">userCodeCountry</string>
     <string name="result_cip_list">resultCipList</string>
     <string name="admin_email">adminEmail</string>
-    <string name="title_activity_list_cips">ListCipsActivity</string>
+    <string name="generate_cip">Generar CIP</string>
     <string name="generating_cip">Generando CIP</string>
     <string name="title_movil">Móvil</string>
     <string name="title_agents">Agentes</string>
@@ -47,11 +42,6 @@
     <string name="pe_master_card">Master Card</string>
     <string name="pe_american_express">American Express</string>
     <string name="pe_dinners_club">Dinners Club</string>
-    <string name="title_activity_agents">AgentsActivity</string>
-
-    <string name="cip_subtitle">CIP :</string>
-    <string name="amount_subtitle">Monto</string>
-    <string name="date_expiry_subtitle">Fecha de vencimiento</string>
 
     <string name="agent_bcp">BCP</string>
     <string name="agent_banbif">BANBIF</string>
@@ -61,8 +51,7 @@
     <string name="agent_casnet">AGENTE CASNET</string>
     <string name="agent_wester">WESTERN UNION</string>
     <string name="agent_full_charge">FULL CARGA</string>
-    <string name="generate_button">Generar</string>
-    <string name="search_button">BuscarCips</string>
+    <string name="search_button">Buscar Cips</string>
     <string name="payment_method_not_available">No disponible este método de pago</string>
     <string name="follow_this_steps_subtitle">Sigue estos pasos</string>
 
@@ -70,7 +59,6 @@
     <string name="step_one_for_payment">1. Ve a tu agente %1$s más cercano</string>
     <string name="step_two_for_payment">2. Indícale que harás un pago a PagoEfectivo - Código: 02186</string>
     <string name="step_three_for_payment">3. Díctale al cajero este código CIP: %1$s</string>
-    <string name="agent_payment">agentPayment</string>
     <string name="transaction_code_subtitle">Transaction Code : </string>
     <string name="currency_subtitle">Currency : </string>
     <string name="status_subtitle">Status : </string>
@@ -81,4 +69,14 @@
     <string name="cip_subtitle2">Cip :</string>
     <string name="amount_subtitle2">Amount :</string>
     <string name="date_expiry_subtitle2">Date Expiry :</string>
+
+    <string name="dateformat_with_values">%1$s/%2$s/%3$s</string>
+
+    <string name="timeformat_with_values">%1$s:%2$s %3$s</string>
+    <string name="new_cip">New Cip</string>
+
+
+    <string name="cip_subtitle">CIP :</string>
+    <string name="amount_subtitle">Monto</string>
+    <string name="date_expiry_subtitle">Fecha de vencimiento</string>
 </resources>

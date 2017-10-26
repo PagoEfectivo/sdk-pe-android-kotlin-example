@@ -13,12 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" />
-        <activity android:name=".GenerateCipActivity" />
+        <activity android:name=".activities.GenerateCipActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:theme="@style/SplashAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,13 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".list_cip.ListCipsActivity" />
+        <activity android:name=".activities.ListCipsActivity" />
         <activity
-            android:name=".payment_method.PaymentMethodActivity"
+            android:name=".activities.PaymentMethodActivity"
             android:label="@string/title_activity_payment_method" />
-        <activity android:name=".agent.WhereToPayActivity" />
-        <activity android:name=".list_cip.ResultSearchCipActivity" />
-        <activity android:name=".PaymentDetailActivity"></activity>
+        <activity android:name=".activities.WhereToPayActivity" />
+        <activity android:name=".activities.ResultSearchCipActivity" />
+        <activity android:name=".activities.PaymentDetailActivity"></activity>
     </application>
 
 </manifest>

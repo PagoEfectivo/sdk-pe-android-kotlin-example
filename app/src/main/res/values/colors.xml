@@ -9,4 +9,6 @@
     <color name="black_traslucent">#DD000000</color>
     <color name="red">#FF0000</color>
     <color name="accent">#C0C0C0</color>
+    <!--grey-->
+    <color name="md_grey_600">#757575</color>
 </resources>

@@ -1,10 +1,11 @@
-package pe.elcomercio.pagoefectivosdkkotlinsample.list_cip
+package pe.elcomercio.pagoefectivosdkkotlinsample.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_result_search_cip.*
 import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipSearch
 import pe.elcomercio.pagoefectivosdkkotlinsample.R
+import pe.elcomercio.pagoefectivosdkkotlinsample.activities.adapters.ResultSearchAdapter
 import java.util.*
 
 class ResultSearchCipActivity : AppCompatActivity() {

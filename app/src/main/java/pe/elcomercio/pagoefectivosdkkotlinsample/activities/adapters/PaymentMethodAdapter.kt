@@ -1,4 +1,4 @@
-package pe.elcomercio.pagoefectivosdkkotlinsample.payment_method
+package pe.elcomercio.pagoefectivosdkkotlinsample.activities.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
