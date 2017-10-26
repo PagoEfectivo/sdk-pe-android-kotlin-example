@@ -1,10 +1,10 @@
-package pe.elcomercio.pagoefectivosdkkotlinsample
+package pe.elcomercio.pagoefectivosdkkotlinsample.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.content_main.*
-import pe.elcomercio.pagoefectivosdkkotlinsample.list_cip.ListCipsActivity
+import pe.elcomercio.pagoefectivosdkkotlinsample.R
 
 class MainActivity : AppCompatActivity() {
 

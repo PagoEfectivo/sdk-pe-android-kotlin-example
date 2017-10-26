@@ -1,12 +1,12 @@
-package pe.elcomercio.pagoefectivosdkkotlinsample.agent
+package pe.elcomercio.pagoefectivosdkkotlinsample.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.activity_where_pay.*
-import pe.elcomercio.pagoefectivosdkkotlinsample.PaymentDetailActivity
 import pe.elcomercio.pagoefectivosdkkotlinsample.R
+import pe.elcomercio.pagoefectivosdkkotlinsample.agent.WhereToPayAdapter
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.adapters.Constants
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentHeaderEntity
 import pe.elcomercio.pagoefectivosdkkotlinsample.model.entity.AgentItemEntity

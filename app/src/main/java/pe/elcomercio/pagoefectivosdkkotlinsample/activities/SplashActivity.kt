@@ -1,8 +1,9 @@
-package pe.elcomercio.pagoefectivosdkkotlinsample
+package pe.elcomercio.pagoefectivosdkkotlinsample.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import pe.elcomercio.pagoefectivosdkkotlinsample.R
 
 class SplashActivity : AppCompatActivity() {
 
