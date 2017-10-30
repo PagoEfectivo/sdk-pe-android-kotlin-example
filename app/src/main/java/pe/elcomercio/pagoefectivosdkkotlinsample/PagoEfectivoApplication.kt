@@ -8,6 +8,7 @@ import pe.elcomercio.pagoefectivosdk.PagoEfectivoSdk
  */
 class PagoEfectivoApplication : Application() {
     override fun onCreate() {
+        super.onCreate()
         val pagoEfectivoSdk = PagoEfectivoSdk.inicialize(this)
         pagoEfectivoSdk.setServiceId(5)
         pagoEfectivoSdk.setAccessKey("AKIPJP77AHN2DKVIJCCA")

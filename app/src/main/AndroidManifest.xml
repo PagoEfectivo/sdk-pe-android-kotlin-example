@@ -32,7 +32,7 @@
             android:label="@string/title_activity_payment_method" />
         <activity android:name=".activities.WhereToPayActivity" />
         <activity android:name=".activities.ResultSearchCipActivity" />
-        <activity android:name=".activities.PaymentDetailActivity"></activity>
+        <activity android:name=".activities.PaymentDetailActivity" />
     </application>
 
 </manifest>
