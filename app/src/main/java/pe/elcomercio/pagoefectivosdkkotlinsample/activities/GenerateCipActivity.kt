@@ -73,10 +73,6 @@ class GenerateCipActivity : AppCompatActivity(), CipListener,
         val documentTypeAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, documentTypeNameList)
         documentTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spiUserDocumentType.adapter = documentTypeAdapter
-
-        setCurrentDate(this.year, this.month, this.dayOfMonth)
-        setCurrentTime(this.hourOfDay, this.minute)
-
     }
 
     private fun initCurrencyValues() {
@@ -109,20 +105,14 @@ class GenerateCipActivity : AppCompatActivity(), CipListener,
                 getString(R.string.document_pas))
     }
 
-    private fun setCurrentDate(year: Int, month: Int, dayOfMonth: Int) {
-        lblDateExpiry.text = getString(R.string.dateformat_with_values,
+    private fun setCurrentDateTime() {
+
+        val pm_am = if (hourOfDay <= 12) "AM" else "PM"
+
+        lblDateTimeExpiry.text = getString(R.string.dateformat_with_values,
                 Utils.addZeroToNumber(year.toString()),
                 Utils.addZeroToNumber((month + 1).toString()),
-                dayOfMonth.toString())
-    }
-
-    private fun setCurrentTime(hourOfDay: Int, minute: Int) {
-        val pm_am = if (hourOfDay <= 12) {
-            "AM"
-        } else {
-            "PM"
-        }
-        lblTimeExpiry.text = getString(R.string.timeformat_with_values,
+                dayOfMonth.toString(),
                 Utils.addZeroToNumber(hourOfDay.toString()),
                 Utils.addZeroToNumber(minute.toString()),
                 pm_am)
@@ -135,24 +125,29 @@ class GenerateCipActivity : AppCompatActivity(), CipListener,
         cipRequest.userEmail = txtUserEmail.text.toString()
         cipRequest.transactionCode = txtTransactionCode.text.toString()
 
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.YEAR, this.year)
-        calendar.set(Calendar.MONTH, this.month)
-        calendar.set(Calendar.DATE, this.dayOfMonth)
+        if (!lblDateTimeExpiry.text.toString().isEmpty()) {
+            val calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR, this.year)
+            calendar.set(Calendar.MONTH, this.month)
+            calendar.set(Calendar.DATE, this.dayOfMonth)
+            calendar.set(Calendar.HOUR_OF_DAY, this.hourOfDay)
+            calendar.set(Calendar.MINUTE, this.minute)
+            calendar.set(Calendar.SECOND, 0)
+            cipRequest.dateExpiry = calendar.time
+        }
 
-        calendar.set(Calendar.HOUR_OF_DAY, this.hourOfDay)
-        calendar.set(Calendar.MINUTE, this.minute)
-        calendar.set(Calendar.SECOND, 0)
-
-        cipRequest.dateExpiry = calendar.time
         cipRequest.additionalData = txtAdditionalData.text.toString()
         cipRequest.paymentConcept = txtPaymentConcept.text.toString()
         cipRequest.userName = txtUserName.text.toString()
         cipRequest.userLastName = txtUserLastName.text.toString()
         cipRequest.userUbigeo = txtUserUbigeo.text.toString()
         cipRequest.userCountry = txtUserCountry.text.toString()
-        cipRequest.userDocumentType = documentTypeValueList[spiUserDocumentType.selectedItemPosition]
-        cipRequest.userDocumentNumber = txtUserDocumentNumber.text.toString()
+
+        if (!txtUserDocumentNumber.text.toString().isEmpty()) {
+            cipRequest.userDocumentType = documentTypeValueList[spiUserDocumentType.selectedItemPosition]
+            cipRequest.userDocumentNumber = txtUserDocumentNumber.text.toString()
+        }
+
         cipRequest.userPhone = txtUserPhone.text.toString()
         cipRequest.userCodeCountry = txtUserCodeCountry.text.toString()
 
@@ -205,7 +200,7 @@ class GenerateCipActivity : AppCompatActivity(), CipListener,
         datePickerDialogFragment.show(supportFragmentManager, "date_picker_dialog_fragment")
     }
 
-    fun showTimePickerDialog(view: View) {
+    fun showTimePickerDialog() {
         val timePickerDialogFragment = TimePickerDialogFragment.newInstance()
         timePickerDialogFragment.show(supportFragmentManager, "time_picker_dialog_fragment")
     }
@@ -214,12 +209,12 @@ class GenerateCipActivity : AppCompatActivity(), CipListener,
         this.year = year
         this.month = month
         this.dayOfMonth = dayOfMonth
-        setCurrentDate(this.year, this.month, this.dayOfMonth)
+        showTimePickerDialog()
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         this.hourOfDay = hourOfDay
         this.minute = minute
-        setCurrentTime(this.hourOfDay, this.minute)
+        setCurrentDateTime()
     }
 }
