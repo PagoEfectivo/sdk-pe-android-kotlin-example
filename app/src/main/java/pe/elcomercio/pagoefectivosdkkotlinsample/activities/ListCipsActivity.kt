@@ -1,5 +1,6 @@
 package pe.elcomercio.pagoefectivosdkkotlinsample.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TextInputLayout
@@ -15,12 +16,16 @@ import pe.elcomercio.pagoefectivosdk.cip.usermodel.CipSearch
 import pe.elcomercio.pagoefectivosdkkotlinsample.R
 import pe.elcomercio.pagoefectivosdkkotlinsample.commons.extensions.printMessageInToast
 import java.util.*
+import android.view.inputmethod.InputMethodManager
+
 
 @Suppress("UNUSED_PARAMETER")
 class ListCipsActivity : AppCompatActivity(), SearchListener {
 
-    val MAX_NUMBER_OF_VIEWS = 5
+    private val MAX_NUMBER_OF_VIEWS = 5
     private lateinit var pagoEfectivoSdk: PagoEfectivoSdk
+    private lateinit var imm : InputMethodManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +36,9 @@ class ListCipsActivity : AppCompatActivity(), SearchListener {
     private fun init() {
         //Get Instance from PagoEfectivo SDK
         pagoEfectivoSdk = PagoEfectivoSdk.getInstance()
+
+        //Init KeyBoard
+        imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 
     private fun addNewChildViews() {
@@ -40,8 +48,13 @@ class ListCipsActivity : AppCompatActivity(), SearchListener {
             editText.hint = getString(R.string.new_cip)
             editText.tag = lnlCip.childCount
             editText.inputType = InputType.TYPE_CLASS_NUMBER
+
             textInputLayout.addView(editText)
             lnlCip.addView(textInputLayout)
+            textInputLayout.requestFocus()
+
+        } else {
+            printMessageInToast(resources.getString(R.string.limit_search_alert))
         }
     }
 
@@ -60,11 +73,20 @@ class ListCipsActivity : AppCompatActivity(), SearchListener {
     }
 
     fun searchCipSdkOnClick(view: View) {
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
         printMessageInToast(resources.getString(R.string.searching_cip))
         pagoEfectivoSdk.searchCip(getEditTextValues(), this)
     }
 
-    fun addCipRow(view: View) = addNewChildViews()
+    fun addCipRow(view: View) {
+        //Prepare focus in Keyboard
+        if (lnlCip.childCount == 0) {
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+        }
+
+        addNewChildViews()
+
+    }
 
     override fun OnSearchSuccessful(listCips: List<CipSearch>) {
         val intent = Intent(this, ResultSearchCipActivity::class.java)

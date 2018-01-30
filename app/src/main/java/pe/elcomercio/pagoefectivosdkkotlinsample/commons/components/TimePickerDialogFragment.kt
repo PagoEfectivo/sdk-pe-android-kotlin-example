@@ -36,14 +36,14 @@ class TimePickerDialogFragment : DialogFragment() {
         mListener = null
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = inflater?.inflate(R.layout.fragment_dialog_time_picker, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+            inflater.inflate(R.layout.fragment_dialog_time_picker, container, false)
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         dialog.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         dialog.window.requestFeature(Window.FEATURE_NO_TITLE)
 
-        timePicker = view!!.findViewById(R.id.timePicker)
+        timePicker = view.findViewById(R.id.timePicker)
         btnOk = view.findViewById(R.id.btnOk)
         btnCancel = view.findViewById(R.id.btnCancel)
 
